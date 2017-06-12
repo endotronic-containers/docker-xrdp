@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update 
 RUN apt-get install -y supervisor xrdp x11vnc xvfb
@@ -24,4 +24,7 @@ RUN sed -i '/TerminalServerUsers/d' /etc/xrdp/sesman.ini && \
 
 EXPOSE 3389
 EXPOSE 5900
-ENTRYPOINT ["/bin/sh", "/root/entry.sh"]
+ENV PASSWORD=foo
+ENV VNC_RES="2560x1600"
+
+ENTRYPOINT ["/bin/bash", "/root/entry.sh"]
