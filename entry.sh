@@ -17,6 +17,9 @@ echo "Password is $PASSWORD"
 echo $@ > /home/foo/.config/openbox/autostart
 chown foo:foo /home/foo/.config/openbox/autostart && chmod +x /home/foo/.config/openbox/autostart
 
+touch /root/init.sh
+/root/init.sh
+
 /usr/bin/supervisord --nodaemon &
 child=$! 
 wait "$child"
