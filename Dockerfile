@@ -12,7 +12,8 @@ RUN chmod +x /root/entry.sh
 
 RUN mkdir -p /var/log/supervisor
 RUN useradd -m foo && \
-    echo "foo:bar" | chpasswd
+    echo "foo:bar" | chpasswd && \
+    chown -R foo:foo /home/foo
 
 RUN mkdir -p /home/foo/.config/openbox
 RUN dbus-uuidgen > /etc/machine-id
